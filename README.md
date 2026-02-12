@@ -1,5 +1,7 @@
 # Expense Tracker
 
+**[Live Demo](https://expense-tracker-ah.vercel.app)** &nbsp;|&nbsp; **[GitHub](https://github.com/ahenderson316/expense-tracker)**
+
 A full-stack expense tracking application built with **Node.js**, **Express**, and **vanilla JavaScript**, with visual charts powered by **Chart.js**.
 
 ## Features
