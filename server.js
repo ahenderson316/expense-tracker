@@ -5,7 +5,9 @@ const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const DATA_FILE = path.join(__dirname, 'expenses.json');
+const DATA_FILE = process.env.VERCEL
+  ? '/tmp/expenses.json'
+  : path.join(__dirname, 'expenses.json');
 
 app.use(cors());
 app.use(express.json());
@@ -99,6 +101,10 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Expense Tracker running at http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Expense Tracker running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
